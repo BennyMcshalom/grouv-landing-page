@@ -1,0 +1,46 @@
+import {
+  Building2,
+  Sparkles,
+  TrendingUp,
+  Compass,
+  Heart,
+  Palette,
+  BookOpen,
+  Users,
+  Sunrise,
+  Laptop,
+  Coffee,
+  CalendarDays,
+  MapPin,
+  Navigation,
+  Sprout,
+  MessageCircle,
+  Share2,
+  type LucideIcon,
+} from 'lucide-react';
+
+export const SPACE_ICONS: Record<string, LucideIcon> = {
+  Career:        Building2,
+  Spiritual:     Sparkles,
+  Wealth:        TrendingUp,
+  Adventure:     Compass,
+  Health:        Heart,
+  Creative:      Palette,
+  Learning:      BookOpen,
+  Relationships: Users,
+};
+
+export {
+  Sunrise,
+  Laptop,
+  Coffee,
+  CalendarDays,
+  MapPin,
+  Navigation,
+  Building2,
+  Palette,
+  Sprout,
+  MessageCircle,
+  Share2,
+  type LucideIcon,
+};

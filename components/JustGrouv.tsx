@@ -1,0 +1,42 @@
+import Image from 'next/image';
+
+export default function JustGrouv() {
+  return (
+    <section className="sect-pad dark" aria-labelledby="jg-heading">
+      <div className="wrap split rev">
+        <div className="split-media" style={{ display: 'flex', justifyContent: 'center' }}>
+          <figure
+            className="jg-card reveal d1"
+            data-float=""
+            style={{ animation: 'float 9s ease-in-out infinite' }}
+          >
+            <span className="jg-tag">Just Grouv</span>
+            <Image src="/assets/face8.png" alt="" width={330} height={413} />
+            <div className="jg-overlay" aria-hidden="true" />
+            <div className="jg-top" aria-hidden="true">
+              <div className="jg-clock">23:41</div>
+              <div className="jg-loc">Porto, Portugal</div>
+            </div>
+            <figcaption className="jg-cap">
+              <p>sat down. didn&#39;t get up easy.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="split-copy">
+          <span className="eyebrow reveal">A quieter kind of post</span>
+          <div className="head">
+            <h2 className="reveal d1" id="jg-heading">
+              Some nights don&#39;t need a <em>paragraph.</em>
+            </h2>
+            <p className="reveal d2">
+              Just Grouv is a single frame and a single line — the time on the clock, the place
+              you&#39;re standing, and the one honest caption you&#39;d never put anywhere public.
+              Your circle sees it. No one else does.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
