@@ -3,26 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { SPACES } from '@/lib/data';
 import { SPACE_ICONS } from '@/lib/icons';
-
-function fmt(n: number) {
-  return n.toLocaleString('en-US');
-}
-
-function waitlistBase(): number {
-  const stored = parseInt(localStorage.getItem('grouv_wl') || '', 10);
-  if (!stored) {
-    localStorage.setItem('grouv_wl', '2184');
-    return 2184;
-  }
-  return stored;
-}
+import { joinWaitlist } from '@/app/actions';
 
 export default function JoinCTA() {
   const [picked, setPicked] = useState<string[]>([]);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [pos, setPos] = useState(0);
-  const [doneMsg, setDoneMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const emailRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -40,22 +28,23 @@ export default function JoinCTA() {
     );
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       emailRef.current?.focus();
       return;
     }
-    const base = waitlistBase();
-    let position = base - Math.floor(Math.random() * 740) - 120;
-    if (position < 60) position = 60 + Math.floor(Math.random() * 40);
-    setPos(position);
-    setDoneMsg(
-      picked.length > 0
-        ? `We'll hold a place in your ${picked.length === 1 ? 'chapter' : 'chapters'} and reach out as soon as people in the same place start forming a circle.`
-        : "We'll hold a place in your chapter. Watch for one quiet email when your circle starts to form.",
-    );
-    localStorage.setItem('grouv_wl', String(base + 1));
+    setLoading(true);
+    setError('');
+
+    const result = await joinWaitlist(email, picked);
+    setLoading(false);
+
+    if (!result.ok) {
+      setError(result.error ?? 'Something went wrong. Please try again.');
+      return;
+    }
+
     setSubmitted(true);
   }
 
@@ -114,11 +103,18 @@ export default function JoinCTA() {
                     autoComplete="email"
                     aria-label="Email address"
                     required
+                    disabled={loading}
                   />
-                  <button type="submit" className="btn btn-primary btn-lg">
-                    Save my spot
+                  <button type="submit" className="btn btn-primary btn-lg" disabled={loading}
+                    style={{ opacity: loading ? 0.7 : 1 }}>
+                    {loading ? 'Saving…' : 'Save my spot'}
                   </button>
                 </div>
+                {error && (
+                  <p role="alert" style={{ color: '#ff6b4a', fontSize: '.88rem', marginTop: '.6rem' }}>
+                    {error}
+                  </p>
+                )}
                 <p className="cta-note">No spam, ever. One quiet note when your circle is ready.</p>
               </form>
             </div>
@@ -131,11 +127,11 @@ export default function JoinCTA() {
                 </svg>
               </div>
               <h2 id="join-heading">You&#39;re <em>on the list.</em></h2>
-              <p>{doneMsg}</p>
-              <div className="cta-pos">
-                <span className="n">#{fmt(pos)}</span>
-                <span className="l">your place in line</span>
-              </div>
+              <p>
+                {picked.length > 0
+                  ? `We'll reach out as soon as people in your ${picked.length === 1 ? 'chapter' : 'chapters'} start forming a circle. One quiet email, nothing more.`
+                  : "We'll reach out as soon as your circle starts to form. One quiet email, nothing more."}
+              </p>
               {picked.length > 0 && (
                 <div className="cta-echo" aria-label="Selected chapters">
                   {picked.map((name) => {

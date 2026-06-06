@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────────────
    GROUV — Waitlist landing · globals
-   Brand: ember + forest + warm cream · Cormorant / Outfit / DM Mono
+   Brand: ember + forest + warm cream · Figtree / Outfit / DM Mono
    ───────────────────────────────────────────────────────────── */
 :root {
   /* Brand palette */
@@ -16,6 +16,7 @@
   --forest-3: #36523F;
   --sage: #4E7D5E;
   --mint: #8DD4A4;
+  --deep: #1E1C2F;
 
   --bg: #F4F2EE;
   --cream: #FAFAF8;
@@ -48,7 +49,7 @@
   --au-active: #8DD4A4;
 
   /* Typography — next/font injects --font-* CSS vars on <html> */
-  --display: var(--font-cormorant, 'Cormorant Garamond'), Georgia, serif;
+  --display: var(--font-figtree, 'Figtree'), system-ui, sans-serif;
   --ui: var(--font-outfit, 'Outfit'), system-ui, sans-serif;
   --mono: var(--font-dm-mono, 'DM Mono'), ui-monospace, monospace;
 
@@ -150,7 +151,7 @@ button {
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
 }
 
 section {
@@ -498,7 +499,7 @@ body.js .reveal.in {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.05rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: 1.05rem clamp(1rem, 4vw, 2.5rem);
   transition: background .3s, box-shadow .3s, padding .3s, border-color .3s;
   border-bottom: 1px solid transparent;
 }
@@ -543,35 +544,13 @@ body.js .reveal.in {
 .brand {
   display: flex;
   align-items: center;
-  gap: .6rem;
 }
 
-.brand-mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px -3px rgba(243, 112, 30, .55);
-}
-
-.brand-mark span {
-  font-family: var(--display);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.brand-name {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: .01em;
-  color: var(--ink);
+.brand-logo {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* ── Hero ── */
@@ -1070,7 +1049,7 @@ body.js .reveal.in {
 
 /* ── Just Grouv (cinematic dark) ── */
 .dark {
-  background: var(--sage);
+  background: var(--deep);
   color: #fff;
 }
 
@@ -1530,11 +1509,9 @@ body.js .reveal.in {
   padding: .42rem .9rem;
   font-size: .8rem;
   font-weight: 600;
-  transition: background .15s;
-}
-
-.ev-join.going {
-  background: var(--sage);
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Stage wave card */
@@ -1546,6 +1523,9 @@ body.js .reveal.in {
 }
 
 .wave-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
   padding: .4rem .8rem;
   border-radius: 100px;
   font-size: .78rem;
@@ -1618,11 +1598,17 @@ body.js .reveal.in {
 }
 
 .wave-st {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
   font-size: .72rem;
   color: var(--ink-3);
 }
 
 .wave-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
   margin-left: auto;
   padding: .34rem .85rem;
   border-radius: 100px;
@@ -1631,12 +1617,9 @@ body.js .reveal.in {
   border: 1.5px solid var(--ember);
   color: var(--ember);
   background: transparent;
-  transition: all .15s;
-}
-
-.wave-btn.waved {
-  background: var(--ember);
-  color: #fff;
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Meet & greet sub-block */
@@ -1727,13 +1710,10 @@ body.js .reveal.in {
   border: 1.5px solid var(--sage);
   color: var(--sage);
   background: transparent;
-  transition: all .15s;
   white-space: nowrap;
-}
-
-.meet-btn.here {
-  background: var(--sage);
-  color: #fff;
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* ── How it works ── */
@@ -1781,10 +1761,10 @@ body.js .reveal.in {
 
 /* ── Final CTA ── */
 .cta {
-  background: var(--sage);
+  background: var(--deep);
   color: #fff;
   border-radius: clamp(20px, 4vw, 40px);
-  padding: clamp(2.6rem, 6vw, 5rem) clamp(1.6rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4.5rem);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -1795,8 +1775,8 @@ body.js .reveal.in {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(52% 60% at 82% 8%, rgba(243, 112, 30, .28), transparent 62%),
-    radial-gradient(46% 56% at 6% 100%, rgba(20, 48, 40, .4), transparent 64%);
+    radial-gradient(52% 60% at 82% 8%, rgba(243, 112, 30, .32), transparent 62%),
+    radial-gradient(46% 56% at 6% 100%, rgba(10, 10, 40, .5), transparent 64%);
 }
 
 .cta-inner {
@@ -2080,59 +2060,301 @@ body.no-motion .meet-live .pd {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   MOBILE — comprehensive responsive fixes
+   Target: ≤ 640 px (phones). Side padding locked to 16 px.
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* ── Core: 16 px side padding everywhere ── */
+  .wrap {
+    padding-inline: 1rem;
+  }
+
+  .nav {
+    padding-inline: 1rem;
+  }
+
+  /* ── Section vertical rhythm: tighten slightly ── */
+  .sect-pad {
+    padding-block: clamp(3rem, 12vw, 5rem);
+  }
+
+  /* ── Nav: ThemeToggle + brand fit fine; hide extra CTA
+        (the hero form and #join section already cover sign-up) ── */
+  .nav-right .btn-primary {
+    display: none;
+  }
+
+  .nav-right {
+    gap: .75rem;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding-top: 7rem;
+  }
+
+  /* Stack email form — side-by-side input+button is too cramped */
+  .wl-inline {
+    flex-direction: column;
+    max-width: 100%;
+    gap: .6rem;
+  }
+
+  .wl-inline input {
+    border-radius: 14px;
+    width: 100%;
+  }
+
+  .wl-inline .btn {
+    border-radius: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Social proof row: center on narrow */
+  .proof {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .6rem;
+  }
+
+  /* ── Split sections: tighter gap when stacked ── */
+  .split {
+    gap: 2rem;
+  }
+
+  /* ── Spaces grid: 2-column stays but cards are slimmer ── */
+  .spaces-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem;
+    margin-top: 2rem;
+  }
+
+  .space-card {
+    padding: 1.1rem 1rem 1.1rem;
+  }
+
+  .space-card h3 {
+    font-size: 1.15rem;
+  }
+
+  /* ── Aura row: already 2-col at 880 px; reduce vertical spacing ── */
+  .aura-row {
+    gap: 1.8rem .75rem;
+    margin-top: 2.4rem;
+  }
+
+  /* ── Just Grouv card ── */
+  .jg-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  /* ── Bonds avatar stack ── */
+  .bond-stack .ba {
+    width: 72px;
+    height: 72px;
+    margin-left: -20px;
+  }
+
+  /* ── Nearby ── */
+
+  /* Event card meta row: let join button wrap to new line naturally */
+  .ev-meta {
+    gap: .4rem;
+  }
+
+  /* Meet cards: when the right-side info wraps, keep it tidy */
+  .meet-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .meet-right {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Wave button: slightly compact */
+  .wave-btn {
+    padding: .3rem .7rem;
+    font-size: .75rem;
+  }
+
+  /* Stage chips in header row */
+  .wave-chip {
+    font-size: .74rem;
+    padding: .35rem .7rem;
+  }
+
+  /* ── Final CTA ── */
+
+  /* Stack email row vertically */
+  .cta-emailrow {
+    flex-direction: column;
+    max-width: 100%;
+    gap: .6rem;
+  }
+
+  .cta-emailrow input {
+    border-radius: 14px;
+    width: 100%;
+  }
+
+  .cta-emailrow .btn {
+    border-radius: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Chips: tighter, slightly smaller */
+  .cta-chips {
+    gap: .4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cta-chip {
+    font-size: .82rem;
+    padding: .42rem .72rem;
+  }
+
+  /* Done state: compress position badge */
+  .cta-pos {
+    padding: .9rem 1.6rem;
+  }
+
+  .cta-pos .n {
+    font-size: 2.1rem;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Centre logo + tagline on mobile */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-tag {
+    max-width: 100%;
+    margin-top: .6rem;
+  }
+
+  /* 2-col grid: Product | Company, then Quiet stuff spans full row */
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 2rem;
+    width: 100%;
+    flex-direction: unset;
+  }
+
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 1.4rem;
+  }
+
+  .footer-col:last-child a {
+    margin-bottom: 0;
+  }
+
+  .footer-bot {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .4rem;
+    font-size: .8rem;
+  }
+}
+
+/* ── Very small screens (≤ 360 px, e.g. older Androids) ── */
+@media (max-width: 360px) {
+
+  /* Collapse spaces to single column so cards aren't too narrow */
+  .spaces-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Collapse aura to single column */
+  .aura-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Steps already 1-col at 760 px — no change needed */
+}
+
+/* ─────────────────────────────────────────────────────────────
    DARK MODE
    Overrides CSS custom properties; most UI adapts automatically
    since every color reference already uses var(--*)
    ───────────────────────────────────────────────────────────── */
 [data-theme="dark"] {
   /* Surface */
-  --bg:        #100F0E;
-  --cream:     #151412;
-  --white:     #1D1C1B;
-  --surf-low:  #1A1917;
+  --bg: #100F0E;
+  --cream: #151412;
+  --white: #1D1C1B;
+  --surf-low: #1A1917;
   --surf-high: #232120;
 
   /* Ink */
-  --ink:   #F0EDE8;
+  --ink: #F0EDE8;
   --ink-2: #C4BEB6;
   --ink-3: #7A746C;
   --ink-4: #4A4640;
 
   /* Borders */
-  --border:   rgba(255, 255, 255, .07);
+  --border: rgba(255, 255, 255, .07);
   --border-2: rgba(255, 255, 255, .12);
 
   /* Ember — stay warm, slightly lifted */
-  --ember:      #F5792A;
+  --ember: #F5792A;
   --ember-deep: #D46520;
   --ember-soft: rgba(243, 112, 30, .14);
-  --ember-dim:  rgba(243, 112, 30, .12);
-  --ember-bdr:  rgba(243, 112, 30, .28);
+  --ember-dim: rgba(243, 112, 30, .12);
+  --ember-bdr: rgba(243, 112, 30, .28);
 
   /* Sage — a touch brighter for legibility on dark */
   --sage: #5E9B70;
   --mint: #9EDBB0;
+  --deep: #131220;
 
   /* Aura palette — lifted for dark backgrounds */
   --au-reflective: #5E9B70;
-  --au-open:       #F5792A;
-  --au-focus:      #8EA5C5;
+  --au-open: #F5792A;
+  --au-focus: #8EA5C5;
   --au-transition: #CA8C30;
-  --au-active:     #9EDBB0;
+  --au-active: #9EDBB0;
 
   /* Space accent swatches — deep, richly tinted */
-  --c-career:   #3D2810;
-  --c-spiritual:#28203D;
-  --c-wealth:   #182E1E;
-  --c-adventure:#18252F;
-  --c-health:   #2E1818;
+  --c-career: #3D2810;
+  --c-spiritual: #28203D;
+  --c-wealth: #182E1E;
+  --c-adventure: #18252F;
+  --c-health: #2E1818;
   --c-creative: #2D1622;
   --c-learning: #1A2038;
   --c-relation: #38220F;
 
   /* Shadows — heavier so cards lift against dark ground */
-  --shadow:      0 4px 24px -2px rgba(0, 0, 0, .35), 0 2px 8px -2px rgba(0, 0, 0, .25);
-  --shadow-lg:   0 24px 60px -16px rgba(0, 0, 0, .6),  0 8px 22px -10px rgba(0, 0, 0, .35);
+  --shadow: 0 4px 24px -2px rgba(0, 0, 0, .35), 0 2px 8px -2px rgba(0, 0, 0, .25);
+  --shadow-lg: 0 24px 60px -16px rgba(0, 0, 0, .6), 0 8px 22px -10px rgba(0, 0, 0, .35);
   --shadow-soft: 0 2px 12px -2px rgba(0, 0, 0, .3);
 }
 

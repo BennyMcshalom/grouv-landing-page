@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from './ThemeToggle';
 
 export default function Nav() {
@@ -17,8 +18,14 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav" aria-label="Main navigation">
       <Link className="brand" href="#top" aria-label="Grouv home">
-        <span className="brand-mark"><span>G</span></span>
-        <span className="brand-name">Grouv</span>
+        <Image
+          src="/assets/logo.png"
+          alt="Grouv"
+          width={120}
+          height={36}
+          className="brand-logo"
+          priority
+        />
       </Link>
 
       <div className="nav-links">

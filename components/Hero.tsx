@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { HERO_NODES, PROOF_FACES, AURAS, type AuraType } from '@/lib/data';
 import { SPACE_ICONS } from '@/lib/icons';
+import { joinWaitlist } from '@/app/actions';
 
 /* ── Aura ring renderer ── */
 function AuraRings({ type, size }: { type: AuraType; size: number }) {
@@ -114,6 +115,8 @@ function HeroForm() {
       emailRef.current?.focus();
       return;
     }
+    // Capture the email early — fire-and-forget so UX isn't blocked
+    joinWaitlist(email).catch(() => null);
     window.dispatchEvent(new CustomEvent('grouv:prefill-email', { detail: email }));
     document.getElementById('join')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

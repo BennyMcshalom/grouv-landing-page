@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const productLinks = [
   { label: 'The feeling', href: '#feeling' },
@@ -26,10 +27,15 @@ export default function Footer() {
     <footer className="footer">
       <div className="wrap">
         <div className="footer-top">
-          <div>
+          <div className="footer-brand">
             <Link className="brand" href="#top" aria-label="Grouv home">
-              <span className="brand-mark"><span>G</span></span>
-              <span className="brand-name">Grouv</span>
+              <Image
+                src="/assets/logo.png"
+                alt="Grouv"
+                width={120}
+                height={36}
+                className="brand-logo"
+              />
             </Link>
             <p className="footer-tag">
               Social for where you actually are in life. A small circle of people in the same

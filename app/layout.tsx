@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, Outfit, DM_Mono } from 'next/font/google';
+import { Figtree, Outfit, DM_Mono } from 'next/font/google';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
+const figtree = Figtree({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-figtree',
   display: 'swap',
 });
 
@@ -27,7 +27,7 @@ const dmMono = DM_Mono({
 const siteUrl = 'https://grouv.app';
 const siteTitle = 'Grouv — Social for where you actually are in life';
 const siteDesc =
-  'A small circle of people in the same chapter as you. No audience, no performance, just depth. Join the Grouv waitlist.';
+  'Find people in the same chapter of life as you — career pivots, new cities, creative blocks, big transitions. Grouv is a small-circle social app built for depth, not reach. Join the waitlist.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,8 +37,10 @@ export const metadata: Metadata = {
   },
   description: siteDesc,
   keywords: [
-    'social network', 'authentic connection', 'life chapters', 'community',
-    'waitlist', 'grouv', 'real friendships', 'online community',
+    'social app', 'social network', 'life chapters', 'authentic connection',
+    'small community', 'meaningful relationships', 'career transitions',
+    'life transitions', 'community building', 'intentional social network',
+    'real friendships', 'online community', 'grouv', 'waitlist',
   ],
   authors: [{ name: 'Grouv', url: siteUrl }],
   creator: 'Grouv',
@@ -51,14 +53,7 @@ export const metadata: Metadata = {
     siteName: 'Grouv',
     title: siteTitle,
     description: siteDesc,
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Grouv — Social for where you actually are in life',
-      },
-    ],
+    // opengraph-image.tsx is auto-discovered by Next.js — no explicit images needed
   },
   twitter: {
     card: 'summary_large_image',
@@ -66,12 +61,12 @@ export const metadata: Metadata = {
     creator: '@grouv',
     title: siteTitle,
     description: siteDesc,
-    images: ['/og-image.png'],
   },
   alternates: { canonical: siteUrl },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [{ url: '/assets/logo.png', type: 'image/png' }],
+    shortcut: '/assets/logo.png',
+    apple: '/assets/logo.png',
   },
 };
 
@@ -91,6 +86,11 @@ const jsonLd = {
       name: 'Grouv',
       description: siteDesc,
       publisher: { '@id': `${siteUrl}/#organization` },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
     },
     {
       '@type': 'Organization',
@@ -99,9 +99,9 @@ const jsonLd = {
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/logo.png`,
+        url: `${siteUrl}/assets/logo.png`,
       },
-      sameAs: [`https://twitter.com/grouv`],
+      sameAs: ['https://twitter.com/grouv'],
     },
     {
       '@type': 'WebPage',
@@ -110,6 +110,22 @@ const jsonLd = {
       name: siteTitle,
       description: siteDesc,
       isPartOf: { '@id': `${siteUrl}/#website` },
+      about: { '@id': `${siteUrl}/#app` },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${siteUrl}/#app`,
+      name: 'Grouv',
+      applicationCategory: 'SocialNetworkingApplication',
+      operatingSystem: 'iOS, Android, Web',
+      description:
+        'A social app built around life chapters. Find a small circle of people in the exact same season of life as you — no algorithm, no audience, just depth.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      publisher: { '@id': `${siteUrl}/#organization` },
     },
   ],
 };
@@ -127,7 +143,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${outfit.variable} ${dmMono.variable}`}
+      className={`${figtree.variable} ${outfit.variable} ${dmMono.variable}`}
       suppressHydrationWarning
     >
       <head>

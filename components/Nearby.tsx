@@ -1,43 +1,19 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import { Building2, Palette, Navigation, Sunrise, CalendarDays, Laptop, Coffee, Hand } from 'lucide-react';
 
-type WaveState = Record<string, boolean>;
-type MeetState = Record<string, boolean>;
+const radarPins = [
+  { face: '/assets/face7.png', label: 'On the road now', icon: <Navigation size={10} strokeWidth={2} />, style: { left: '50%', top: '11%' } },
+  { face: '/assets/face2.png', label: 'Mid-project',     icon: <Palette   size={10} strokeWidth={2} />, style: { left: '15%', top: '64%' } },
+  { face: '/assets/face4.png', label: 'Building, early', icon: <Building2 size={10} strokeWidth={2} />, style: { left: '84%', top: '58%' } },
+];
 
-/* Tiny chip for stage labels inside radar and wave rows */
-function StageIcon({ name }: { name: string }) {
-  if (name === 'career') return <Building2 size={11} strokeWidth={2} aria-hidden="true" />;
-  if (name === 'creative') return <Palette size={11} strokeWidth={2} aria-hidden="true" />;
-  return <Navigation size={11} strokeWidth={2} aria-hidden="true" />;
-}
+const waveUsers = [
+  { name: 'David Okonkwo', face: '/assets/face4.png', stage: 'Building a business · early' },
+  { name: 'Cole Bennett',  face: '/assets/face1.png', stage: 'Building a business · early' },
+  { name: 'Saanvi Rao',    face: '/assets/face3.png', stage: 'Building a business · early' },
+];
 
 export default function Nearby() {
-  const [going, setGoing] = useState(false);
-  const [waves, setWaves] = useState<WaveState>({});
-  const [meets, setMeets] = useState<MeetState>({});
-
-  function toggleWave(name: string) {
-    setWaves((prev) => ({ ...prev, [name]: !prev[name] }));
-  }
-  function toggleMeet(key: string) {
-    setMeets((prev) => ({ ...prev, [key]: !prev[key] }));
-  }
-
-  const waveUsers = [
-    { name: 'David Okonkwo', face: '/assets/face4.png', stage: 'Building a business · early', icon: 'career' },
-    { name: 'Cole Bennett',  face: '/assets/face1.png', stage: 'Building a business · early', icon: 'career' },
-    { name: 'Saanvi Rao',    face: '/assets/face3.png', stage: 'Building a business · early', icon: 'career' },
-  ];
-
-  const radarPins = [
-    { face: '/assets/face7.png', label: 'On the road now',  icon: <Navigation size={10} strokeWidth={2} />, style: { left: '50%', top: '11%' } },
-    { face: '/assets/face2.png', label: 'Mid-project',      icon: <Palette size={10} strokeWidth={2} />,    style: { left: '15%', top: '64%' } },
-    { face: '/assets/face4.png', label: 'Building, early',  icon: <Building2 size={10} strokeWidth={2} />,  style: { left: '84%', top: '58%' } },
-  ];
-
   return (
     <section className="sect-pad nearby-sect" id="nearby" aria-labelledby="nearby-heading">
       <div className="wrap">
@@ -56,11 +32,11 @@ export default function Nearby() {
         {/* Radar */}
         <div className="radar reveal d2" aria-label="Radar showing 3 nearby people">
           <div className="ring breathe" style={{ width: '100%', height: '100%', animationDelay: '0s' }} />
-          <div className="ring breathe" style={{ width: '74%', height: '74%', animationDelay: '.5s' }} />
-          <div className="ring breathe" style={{ width: '48%', height: '48%', animationDelay: '1s' }} />
-          <div className="ring breathe" style={{ width: '24%', height: '24%', animationDelay: '1.5s' }} />
+          <div className="ring breathe" style={{ width: '74%',  height: '74%',  animationDelay: '.5s' }} />
+          <div className="ring breathe" style={{ width: '48%',  height: '48%',  animationDelay: '1s' }} />
+          <div className="ring breathe" style={{ width: '24%',  height: '24%',  animationDelay: '1.5s' }} />
           <div className="sonar" aria-hidden="true" />
-          <div className="core" aria-hidden="true" />
+          <div className="core"  aria-hidden="true" />
           <div className="live-tag">
             <span className="pd" aria-hidden="true" />
             3 nearby
@@ -80,6 +56,7 @@ export default function Nearby() {
         </div>
 
         <div className="prox-grid">
+
           {/* Gatherings panel */}
           <div className="prox-panel reveal d1">
             <span className="kicker">Gatherings</span>
@@ -120,14 +97,8 @@ export default function Nearby() {
                     </span>
                     5 going
                   </span>
-                  <button
-                    type="button"
-                    className={`ev-join${going ? ' going' : ''}`}
-                    onClick={() => setGoing((p) => !p)}
-                    aria-pressed={going}
-                  >
-                    {going ? '✓ Going' : "I'll grouv"}
-                  </button>
+                  {/* Static preview — not a real action */}
+                  <span className="ev-join" aria-hidden="true">I&#39;ll grouv</span>
                 </div>
               </div>
 
@@ -138,8 +109,8 @@ export default function Nearby() {
                   the room, and the people here on the same journey find you.
                 </p>
                 {[
-                  { key: 'tc', Icon: Laptop,  name: 'TechCrunch Disrupt 2026',  where: 'Moscone West · Founders & builders', count: 12 },
-                  { key: 'cf', Icon: Coffee,  name: 'Indie coffee, this block',  where: "Right here · whoever's around",       count: 4 },
+                  { key: 'tc', Icon: Laptop, name: 'TechCrunch Disrupt 2026', where: 'Moscone West · Founders & builders', count: 12 },
+                  { key: 'cf', Icon: Coffee, name: 'Indie coffee, this block', where: "Right here · whoever's around",       count: 4 },
                 ].map(({ key, Icon, name, where, count }) => (
                   <div key={key} className="meet-card">
                     <span className="meet-ico" aria-hidden="true">
@@ -154,14 +125,8 @@ export default function Nearby() {
                         <span className="pd" aria-hidden="true" />
                         live · {count} here
                       </span>
-                      <button
-                        type="button"
-                        className={`meet-btn${meets[key] ? ' here' : ''}`}
-                        onClick={() => toggleMeet(key)}
-                        aria-pressed={!!meets[key]}
-                      >
-                        {meets[key] ? '✓ Here' : "I'm here too"}
-                      </button>
+                      {/* Static preview */}
+                      <span className="meet-btn" aria-hidden="true">I&#39;m here too</span>
                     </div>
                   </div>
                 ))}
@@ -176,17 +141,26 @@ export default function Nearby() {
             <p className="lede">
               Not your city. Not your interests. Your exact stage — &ldquo;building a business,
               early,&rdquo; &ldquo;starting over.&rdquo; The most honest kind of nearby is a wave
-              from a stranger who already gets it.
+              from a stranger who already gets it, because they&rsquo;re carrying the same week you are.
             </p>
             <div className="sizzle">
-              <div className="wave-head" role="tablist" aria-label="Stage filters">
-                <span className="wave-chip on" role="tab" aria-selected="true" style={{ display: 'flex', alignItems: 'center', gap: '.4rem' }}>
-                  <Building2 size={13} strokeWidth={2} aria-hidden="true" />
-                  Building a business · early
-                </span>
-                <span className="wave-chip" role="tab" aria-selected="false" style={{ display: 'flex', alignItems: 'center', gap: '.4rem' }}>
-                  <Palette size={13} strokeWidth={2} aria-hidden="true" />
-                  Mid-project
+              <div
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}
+                aria-hidden="true"
+              >
+                <div className="wave-head" style={{ marginBottom: 0 }}>
+                  <span className="wave-chip on">
+                    <Building2 size={13} strokeWidth={2} aria-hidden="true" />
+                    Building a business · early
+                  </span>
+                  <span className="wave-chip">
+                    <Palette size={13} strokeWidth={2} aria-hidden="true" />
+                    Mid-project
+                  </span>
+                </div>
+                <span className="meet-live" style={{ flexShrink: 0 }}>
+                  <span className="pd" aria-hidden="true" />
+                  37 in stage
                 </span>
               </div>
 
@@ -194,42 +168,37 @@ export default function Nearby() {
                 className="wave-list"
                 data-float=""
                 style={{ animation: 'float 9s ease-in-out infinite' }}
-                role="list"
+                aria-hidden="true"
               >
                 {waveUsers.map((user) => (
-                  <div key={user.name} className="wave-row" role="listitem">
+                  <div key={user.name} className="wave-row">
                     <span className="wave-av">
                       <span className="ph">
                         <Image src={user.face} alt="" width={42} height={42} />
                       </span>
-                      <span className="pd2" aria-hidden="true" />
+                      <span className="pd2" />
                     </span>
                     <div>
                       <div className="wave-nm">{user.name}</div>
-                      <div className="wave-st" style={{ display: 'flex', alignItems: 'center', gap: '.3rem' }}>
-                        <StageIcon name={user.icon} />
+                      <div className="wave-st">
+                        <Building2 size={11} strokeWidth={2} />
                         {user.stage}
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      className={`wave-btn${waves[user.name] ? ' waved' : ''}`}
-                      onClick={() => toggleWave(user.name)}
-                      aria-pressed={!!waves[user.name]}
-                      aria-label={`Wave to ${user.name}`}
-                      style={{ display: 'flex', alignItems: 'center', gap: '.35rem' }}
-                    >
-                      <Hand size={13} strokeWidth={2} aria-hidden="true" />
-                      {waves[user.name] ? 'Waved' : 'Wave'}
-                    </button>
+                    {/* Static preview — not a real action */}
+                    <span className="wave-btn">
+                      <Hand size={13} strokeWidth={2} />
+                      Wave
+                    </span>
                   </div>
                 ))}
               </div>
               <p style={{ fontSize: '.78rem', color: 'var(--ink-4)', fontStyle: 'italic', textAlign: 'center', marginTop: '.9rem' }}>
-                In Stage-only, you&#39;re visible only to people in your exact stage.
+                In Stage-only, you&rsquo;re visible only to people in your exact stage.
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
