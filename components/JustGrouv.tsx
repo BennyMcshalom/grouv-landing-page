@@ -11,7 +11,7 @@ export default function JustGrouv() {
             style={{ animation: 'float 9s ease-in-out infinite' }}
           >
             <span className="jg-tag">Just Grouv</span>
-            <Image src="/assets/face8.png" alt="" width={330} height={413} />
+            <Image src="/assets/new.jpg" alt="" width={330} height={413} />
             <div className="jg-overlay" aria-hidden="true" />
             <div className="jg-top" aria-hidden="true">
               <div className="jg-clock">23:41</div>

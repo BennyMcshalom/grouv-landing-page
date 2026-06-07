@@ -2,71 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { HERO_NODES, PROOF_FACES, AURAS, type AuraType } from '@/lib/data';
-import { SPACE_ICONS } from '@/lib/icons';
+import { HERO_NODES, PROOF_FACES } from '@/lib/data';
 import { joinWaitlist } from '@/app/actions';
-
-/* ── Aura ring renderer ── */
-function AuraRings({ type, size }: { type: AuraType; size: number }) {
-  const color = AURAS[type].color;
-  const out = size + Math.max(12, size * 0.24);
-
-  if (type === 'open') {
-    return (
-      <>
-        <span
-          className="aura aura-breath"
-          style={{ width: out + 8, height: out + 8, background: `radial-gradient(circle,${color}40,transparent 68%)` }}
-        />
-        <span className="aura aura-glow" style={{ width: size + 6, height: size + 6 }} />
-      </>
-    );
-  }
-  if (type === 'reflective') {
-    return (
-      <span
-        className="aura aura-breath"
-        style={{ width: out, height: out, background: `radial-gradient(circle,${color}40,transparent 70%)` }}
-      />
-    );
-  }
-  if (type === 'focus') {
-    return (
-      <span
-        className="aura aura-mist"
-        style={{ width: out + 6, height: out + 6, background: `radial-gradient(circle,${color}66,transparent 70%)` }}
-      />
-    );
-  }
-  if (type === 'transition') {
-    return (
-      <span
-        className="aura aura-spin"
-        style={{ width: out, height: out, border: `2px dashed ${color}`, opacity: '.85' }}
-      />
-    );
-  }
-  if (type === 'active') {
-    return (
-      <>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <span
-            key={i}
-            className="firefly"
-            style={{
-              width: 5, height: 5,
-              background: color,
-              boxShadow: `0 0 6px 2px ${color}`,
-              ['--r' as string]: `${out / 2}px`,
-              animation: `firefly ${3 + i * 0.6}s linear ${i * 0.5}s infinite`,
-            }}
-          />
-        ))}
-      </>
-    );
-  }
-  return null;
-}
 
 /* ── Floating hero stage ── */
 function HeroStage() {
@@ -109,7 +46,6 @@ function HeroStage() {
   return (
     <div className="hero-stage" ref={stageRef} id="heroStage" aria-hidden="true">
       {HERO_NODES.map((node, i) => {
-        const Icon = SPACE_ICONS[node.tag];
         const isRight = !node.x.left;
         return (
           <div
@@ -124,22 +60,9 @@ function HeroStage() {
             <div
               className="node"
               data-float=""
-              style={{
-                width: node.size,
-                height: node.size,
-                animation: `float ${node.dur}s ease-in-out ${i * 0.3}s infinite`,
-              }}
+              style={{ animation: `float ${node.dur}s ease-in-out ${i * 0.3}s infinite` }}
             >
-              <AuraRings type={node.aura} size={node.size} />
-              <div className="pic" style={{ width: node.size, height: node.size }}>
-                <Image src={node.face} alt="" width={node.size} height={node.size} />
-              </div>
-              {node.size >= 76 && (
-                <div className="node-tag">
-                  {Icon && <Icon size={11} strokeWidth={2} />}
-                  {node.tag}
-                </div>
-              )}
+              <Image src={node.face} alt="" width={node.size} height={node.size} />
             </div>
           </div>
         );
