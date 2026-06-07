@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { Building2, Palette, Navigation, Sunrise, CalendarDays, Laptop, Coffee, Hand } from 'lucide-react';
+import { User, Palette, Navigation, Sunrise, CalendarDays, Laptop, Coffee, Hand } from 'lucide-react';
 
 const radarPins = [
   { face: '/assets/face7.png', label: 'On the road now', icon: <Navigation size={10} strokeWidth={2} />, style: { left: '50%', top: '11%' } },
   { face: '/assets/face2.png', label: 'Mid-project',     icon: <Palette   size={10} strokeWidth={2} />, style: { left: '15%', top: '64%' } },
-  { face: '/assets/face4.png', label: 'Building, early', icon: <Building2 size={10} strokeWidth={2} />, style: { left: '84%', top: '58%' } },
+  { face: '/assets/face4.png', label: 'Building, early', icon: <User size={10} strokeWidth={2} />, style: { left: '84%', top: '58%' } },
 ];
 
 const waveUsers = [
@@ -30,7 +30,7 @@ export default function Nearby() {
         </div>
 
         {/* Radar */}
-        <div className="radar reveal d2" aria-label="Radar showing 3 nearby people">
+        <div className="radar reveal d2 scale" aria-label="Radar showing 3 nearby people">
           <div className="ring breathe" style={{ width: '100%', height: '100%', animationDelay: '0s' }} />
           <div className="ring breathe" style={{ width: '74%',  height: '74%',  animationDelay: '.5s' }} />
           <div className="ring breathe" style={{ width: '48%',  height: '48%',  animationDelay: '1s' }} />
@@ -58,7 +58,7 @@ export default function Nearby() {
         <div className="prox-grid">
 
           {/* Gatherings panel */}
-          <div className="prox-panel reveal d1">
+          <div className="prox-panel reveal d1 from-left">
             <span className="kicker">Gatherings</span>
             <h3>An invitation, from someone in the <em>same chapter.</em></h3>
             <p className="lede">
@@ -78,7 +78,7 @@ export default function Nearby() {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div className="ev-name">Founders&#39; dawn walk</div>
                     <div className="ev-host" style={{ display: 'flex', alignItems: 'center', gap: '.3rem' }}>
-                      <Building2 size={11} strokeWidth={2} aria-hidden="true" />
+                      <User size={11} strokeWidth={2} aria-hidden="true" />
                       David · Career · 0.4 km away
                     </div>
                   </div>
@@ -135,7 +135,7 @@ export default function Nearby() {
           </div>
 
           {/* Stage-only panel */}
-          <div className="prox-panel reveal d2">
+          <div className="prox-panel reveal d2 from-right">
             <span className="kicker">Stage-only</span>
             <h3>Found by the few standing <em>exactly where you are.</em></h3>
             <p className="lede">
@@ -150,7 +150,7 @@ export default function Nearby() {
               >
                 <div className="wave-head" style={{ marginBottom: 0 }}>
                   <span className="wave-chip on">
-                    <Building2 size={13} strokeWidth={2} aria-hidden="true" />
+                    <User size={13} strokeWidth={2} aria-hidden="true" />
                     Building a business · early
                   </span>
                   <span className="wave-chip">
@@ -181,7 +181,7 @@ export default function Nearby() {
                     <div>
                       <div className="wave-nm">{user.name}</div>
                       <div className="wave-st">
-                        <Building2 size={11} strokeWidth={2} />
+                        <User size={11} strokeWidth={2} />
                         {user.stage}
                       </div>
                     </div>

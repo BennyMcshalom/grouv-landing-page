@@ -6,7 +6,7 @@ export default function JustGrouv() {
       <div className="wrap split rev">
         <div className="split-media" style={{ display: 'flex', justifyContent: 'center' }}>
           <figure
-            className="jg-card reveal d1"
+            className="jg-card reveal d1 scale"
             data-float=""
             style={{ animation: 'float 9s ease-in-out infinite' }}
           >
@@ -24,15 +24,14 @@ export default function JustGrouv() {
         </div>
 
         <div className="split-copy">
-          <span className="eyebrow reveal">A quieter kind of post</span>
+          <span className="eyebrow reveal from-right">A quieter kind of post</span>
           <div className="head">
-            <h2 className="reveal d1" id="jg-heading">
+            <h2 className="reveal d1 from-right" id="jg-heading">
               Some nights don&#39;t need a <em>paragraph.</em>
             </h2>
-            <p className="reveal d2">
-              Just Grouv is a single frame and a single line — the time on the clock, the place
-              you&#39;re standing, and the one honest caption you&#39;d never put anywhere public.
-              Your circle sees it. No one else does.
+            <p className="reveal d2 from-right">
+              Grouv turns everyday moments into shared experiences. Post a single frame and a
+              single thought, then decide whether it belongs to your private space or the public feed.
             </p>
           </div>
         </div>

@@ -27,7 +27,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="wrap">
         <div className="footer-top">
-          <div className="footer-brand">
+          <div className="footer-brand reveal from-left">
             <Link className="brand" href="#top" aria-label="Grouv home">
               <Image
                 src="/assets/logo.png"
@@ -43,7 +43,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav className="footer-cols" aria-label="Footer navigation">
+          <nav className="footer-cols reveal d1 from-right" aria-label="Footer navigation">
             <div className="footer-col">
               <h4>Product</h4>
               {productLinks.map(({ label, href }) => (
@@ -65,7 +65,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="footer-bot">
+        <div className="footer-bot reveal d2">
           <span>© 2026 Grouv. Made for the chapter you&#39;re in.</span>
           <span className="mono" style={{ letterSpacing: '.1em' }}>NOW FORMING · WORLDWIDE</span>
         </div>

@@ -14,10 +14,20 @@ function AuraRing({ type, size }: { type: AuraType; size: number }) {
     );
   }
   if (type === 'reflective') {
-    return <span className="aura aura-breath" style={{ width: out, height: out, background: `radial-gradient(circle,${color}40,transparent 70%)` }} />;
+    return (
+      <>
+        <span className="aura aura-breath" style={{ width: out + 4, height: out + 4, background: `radial-gradient(circle,${color}60,transparent 68%)` }} />
+        <span className="aura" style={{ width: size + 10, height: size + 10, border: `2px solid ${color}88`, borderRadius: '50%' }} />
+      </>
+    );
   }
   if (type === 'focus') {
-    return <span className="aura aura-mist" style={{ width: out + 6, height: out + 6, background: `radial-gradient(circle,${color}66,transparent 70%)` }} />;
+    return (
+      <>
+        <span className="aura aura-mist" style={{ width: out + 8, height: out + 8, background: `radial-gradient(circle,${color}90,transparent 68%)` }} />
+        <span className="aura" style={{ width: size + 8, height: size + 8, border: `1.5px solid ${color}66`, borderRadius: '50%' }} />
+      </>
+    );
   }
   if (type === 'transition') {
     return <span className="aura aura-spin" style={{ width: out, height: out, border: `2px dashed ${color}`, opacity: '.85' }} />;
@@ -49,21 +59,21 @@ export default function AuraSection() {
     <section className="sect-pad aura-sect" aria-labelledby="aura-heading">
       <div className="wrap">
         <div className="head center">
-          <span className="eyebrow center reveal">Aura — your state, before your words</span>
+          <span className="eyebrow center reveal">Aura ✦ your state, before your words</span>
           <h2 className="reveal d1" id="aura-heading">
             Some days you don&#39;t have a sentence.
           </h2>
           <p className="reveal d2">
-            A ring around you says it instead. Reaching out, turned inward, heads-down, between
-            chapters, or here right now — read at a glance, no status to write.
+            Choose your ring and lock it in until you&rsquo;re ready to change it. Your circle
+            reads your state at a glance, and so does anyone else who encounters you on Grouv.
           </p>
         </div>
 
-        <div className="aura-row reveal d2" role="list">
-          {AURA_ROW.map((item) => {
+        <div className="aura-row" role="list">
+          {AURA_ROW.map((item, i) => {
             const aura = AURAS[item.type as AuraType];
             return (
-              <div key={item.type} className="aura-item" role="listitem">
+              <div key={item.type} className={`aura-item reveal d${i + 1} scale`} role="listitem">
                 <div className="aura-stage" aria-hidden="true">
                   <AuraRing type={item.type as AuraType} size={84} />
                   <div className="aura-portrait">

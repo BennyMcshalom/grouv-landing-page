@@ -70,33 +70,77 @@ function AuraRings({ type, size }: { type: AuraType; size: number }) {
 
 /* ── Floating hero stage ── */
 function HeroStage() {
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const heroEl = stage.closest('header') as HTMLElement;
+    if (!heroEl) return;
+
+    const wraps = Array.from(stage.querySelectorAll<HTMLElement>('.node-wrap'));
+    let ticking = false;
+
+    function update() {
+      // progress: 0 = top of hero, 1 = 60% of hero scrolled past
+      const raw = window.scrollY / (heroEl.offsetHeight * 0.6 || 1);
+      const progress = Math.min(Math.max(raw, 0), 1);
+      // quadratic ease-in — slow start, snappy exit
+      const eased = progress * progress;
+
+      wraps.forEach((wrap) => {
+        const dir = wrap.dataset.side === 'right' ? 1 : -1;
+        wrap.style.transform = `translate(${dir * eased * 160}px, ${-eased * 48}px)`;
+        wrap.style.opacity = String(Math.max(1 - eased * 2.4, 0));
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update(); // sync on mount in case page is pre-scrolled
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <div className="hero-stage" id="heroStage" aria-hidden="true">
+    <div className="hero-stage" ref={stageRef} id="heroStage" aria-hidden="true">
       {HERO_NODES.map((node, i) => {
         const Icon = SPACE_ICONS[node.tag];
+        const isRight = !node.x.left;
         return (
           <div
             key={node.face}
-            className="node"
-            data-float=""
+            className="node-wrap"
+            data-side={isRight ? 'right' : 'left'}
             style={{
-              width: node.size,
-              height: node.size,
               top: node.y,
               ...(node.x.left ? { left: node.x.left } : { right: node.x.right }),
-              animation: `float ${node.dur}s ease-in-out ${i * 0.3}s infinite`,
             }}
           >
-            <AuraRings type={node.aura} size={node.size} />
-            <div className="pic" style={{ width: node.size, height: node.size }}>
-              <Image src={node.face} alt="" width={node.size} height={node.size} />
-            </div>
-            {node.size >= 76 && (
-              <div className="node-tag">
-                {Icon && <Icon size={11} strokeWidth={2} />}
-                {node.tag}
+            <div
+              className="node"
+              data-float=""
+              style={{
+                width: node.size,
+                height: node.size,
+                animation: `float ${node.dur}s ease-in-out ${i * 0.3}s infinite`,
+              }}
+            >
+              <AuraRings type={node.aura} size={node.size} />
+              <div className="pic" style={{ width: node.size, height: node.size }}>
+                <Image src={node.face} alt="" width={node.size} height={node.size} />
               </div>
-            )}
+              {node.size >= 76 && (
+                <div className="node-tag">
+                  {Icon && <Icon size={11} strokeWidth={2} />}
+                  {node.tag}
+                </div>
+              )}
+            </div>
           </div>
         );
       })}
@@ -156,7 +200,7 @@ function ProofStack() {
         ))}
       </div>
       <div className="proof-txt">
-        <b>{count.toLocaleString('en-US')}</b> people already waiting for their circle
+        <b>First circles forming</b> · Be among the first in
       </div>
     </div>
   );
@@ -183,7 +227,7 @@ export default function Hero() {
             <span className="dot" />
             <span>No feed to perform for</span>
             <span className="dot" />
-            <span>Invites roll out by chapter</span>
+            <span>People in the same chapter (nearby, or around the world).</span>
           </div>
           <ProofStack />
         </div>

@@ -51,7 +51,7 @@ export default function JoinCTA() {
   return (
     <section className="sect-pad" id="join" aria-labelledby="join-heading">
       <div className="wrap">
-        <div className="cta reveal">
+        <div className="cta reveal scale">
           <div className="cta-glow" aria-hidden="true" />
 
           {!submitted ? (
@@ -67,10 +67,7 @@ export default function JoinCTA() {
 
               <form className="cta-form" onSubmit={handleSubmit} noValidate>
                 <label className="fl" htmlFor="ctaChipGroup">
-                  Which chapter are you in?{' '}
-                  <span style={{ textTransform: 'none', letterSpacing: 0, color: 'rgba(255,255,255,.35)' }}>
-                    · pick any
-                  </span>
+                  Pick spaces relevant to you at the moment.
                 </label>
                 <div className="cta-chips" id="ctaChipGroup" role="group" aria-label="Life chapters">
                   {SPACES.map((space) => {

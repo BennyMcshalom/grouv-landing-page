@@ -10,41 +10,41 @@ export default function RootCard() {
     >
       <div className="wrap split">
         <div className="split-copy">
-          <span className="eyebrow reveal">A post on Grouv</span>
+          <span className="eyebrow reveal from-left">A post on Grouv</span>
           <div className="head">
-            <h2 className="reveal d1" id="rootcard-heading">
+            <h2 className="reveal d1 from-left" id="rootcard-heading">
               Showing up is <em>one honest sentence.</em>
             </h2>
-            <p className="reveal d2">
+            <p className="reveal d2 from-left">
               No likes to chase. No highlight reel. You say what you&#39;re actually doing,
-              and one true thing about where you are. Your circle roots for you — quietly, specifically.
+              and one true thing about where you are. Your circle roots for you.
             </p>
           </div>
           <ul className="feat-list">
-            <li className="reveal d2">
+            <li className="reveal d2 from-left">
               <span className="tick">
                 <Check size={13} strokeWidth={3} stroke="var(--accent)" aria-hidden="true" />
               </span>
               <span><b>Root</b>, not like — you&#39;re cheering someone on, not scoring them.</span>
             </li>
-            <li className="reveal d3">
+            <li className="reveal d3 from-left">
               <span className="tick">
                 <Check size={13} strokeWidth={3} stroke="var(--accent)" aria-hidden="true" />
               </span>
               <span>Post <b>anonymously</b> when the honest thing is hard to sign.</span>
             </li>
-            <li className="reveal d3">
+            <li className="reveal d3 from-left">
               <span className="tick">
                 <Check size={13} strokeWidth={3} stroke="var(--accent)" aria-hidden="true" />
               </span>
-              <span>Seen only by the people in <b>your chapter</b> — never a stranger&#39;s algorithm.</span>
+              <span>Seen only by the people in <b>your chapter</b>.</span>
             </li>
           </ul>
         </div>
 
         <div className="split-media" style={{ display: 'flex', justifyContent: 'center' }}>
           <article
-            className="ui-card tilt reveal d2"
+            className="ui-card tilt reveal d2 scale"
             data-float=""
             style={{ animation: 'float 8s ease-in-out infinite' }}
           >
@@ -75,7 +75,11 @@ export default function RootCard() {
               The honest thing is I still can&#39;t explain what we do in one sentence, and that
               scares me more than the runway.
             </p>
-            <div className="media-frame" role="presentation" />
+            <div className="media-frame" role="presentation" aria-hidden="true">
+              <div className="media-frame-lines">
+                <span /><span /><span />
+              </div>
+            </div>
 
             <footer className="uic-foot">
               <span className="uic-act on">

@@ -22,7 +22,7 @@ export default function SpacesSection() {
             return (
               <article
                 key={space.name}
-                className={`space-card reveal d${(i % 4) + 1}`}
+                className={`space-card reveal d${(i % 4) + 1} scale`}
                 role="listitem"
               >
                 <div className="swatch" style={{ background: space.color }} aria-hidden="true">

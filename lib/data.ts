@@ -36,11 +36,11 @@ export const SPACES: Space[] = [
 ];
 
 export const AURAS: Record<AuraType, AuraDef> = {
-  open:       { color: 'var(--au-open)',       label: 'Open to connect', hint: 'Reaching out' },
-  reflective: { color: 'var(--au-reflective)', label: 'Reflective',      hint: 'Turned inward' },
-  focus:      { color: 'var(--au-focus)',      label: 'Deep focus',      hint: 'Heads-down, away' },
-  transition: { color: 'var(--au-transition)', label: 'In transition',   hint: 'Between chapters' },
-  active:     { color: 'var(--au-active)',     label: 'Active nearby',   hint: 'Here, right now' },
+  open:       { color: '#F3701E', label: 'Open to connect', hint: 'Reaching out' },
+  reflective: { color: '#4E7D5E', label: 'Reflective',      hint: 'Turned inward' },
+  focus:      { color: '#7E93B3', label: 'Deep focus',      hint: 'Heads-down, away' },
+  transition: { color: '#B97A1E', label: 'In transition',   hint: 'Between chapters' },
+  active:     { color: '#8DD4A4', label: 'Active nearby',   hint: 'Here, right now' },
 };
 
 export const HERO_NODES: HeroNode[] = [
