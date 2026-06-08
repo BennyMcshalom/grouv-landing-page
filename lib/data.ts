@@ -44,26 +44,26 @@ export const AURAS: Record<AuraType, AuraDef> = {
 };
 
 export const HERO_NODES: HeroNode[] = [
-  { face: '/assets/8.png', aura: 'open', emoji: '🎨', tag: 'Creative', x: { left: '4%' }, y: '20%', size: 220, dur: 7.5 },
-  { face: '/assets/9.png', aura: 'reflective', emoji: '💪', tag: 'Health', x: { left: '10%' }, y: '60%', size: 198, dur: 8.5 },
-  { face: '/assets/10.png', aura: 'active', emoji: '📚', tag: 'Learning', x: { left: '2.5%' }, y: '40%', size: 182, dur: 6.8 },
-  { face: '/assets/11.png', aura: 'transition', emoji: '💰', tag: 'Wealth', x: { right: '6%' }, y: '18%', size: 214, dur: 9 },
-  { face: '/assets/12.png', aura: 'focus', emoji: '🏢', tag: 'Career', x: { right: '3.5%' }, y: '52%', size: 198, dur: 7.8 },
-  { face: '/assets/13.png', aura: 'open', emoji: '🏕️', tag: 'Adventure', x: { right: '12%' }, y: '40%', size: 192, dur: 8 },
+  { face: '/assets/8.png', aura: 'open', emoji: '🎨', tag: 'Creative', x: { left: '4%' }, y: '20%', size: 280, dur: 7.5 },
+  { face: '/assets/9.png', aura: 'reflective', emoji: '💪', tag: 'Health', x: { left: '10%' }, y: '60%', size: 228, dur: 8.5 },
+  { face: '/assets/10.png', aura: 'active', emoji: '📚', tag: 'Learning', x: { left: '2.5%' }, y: '40%', size: 212, dur: 6.8 },
+  { face: '/assets/11.png', aura: 'transition', emoji: '💰', tag: 'Wealth', x: { right: '6%' }, y: '18%', size: 244, dur: 9 },
+  { face: '/assets/12.png', aura: 'focus', emoji: '🏢', tag: 'Career', x: { right: '3.5%' }, y: '52%', size: 228, dur: 7.8 },
+  { face: '/assets/13.png', aura: 'open', emoji: '🏕️', tag: 'Adventure', x: { right: '12%' }, y: '40%', size: 222, dur: 8 },
 ];
 
 export const PROOF_FACES = [
-  '/assets/face5.png',
-  '/assets/face4.png',
-  '/assets/face2.png',
-  '/assets/face7.png',
-  '/assets/face6.png',
+  '/assets/5.png',
+  '/assets/4.png',
+  '/assets/2.png',
+  '/assets/7.png',
+  '/assets/6.png',
 ];
 
 export const AURA_ROW: Array<{ type: AuraType; face: string }> = [
-  { type: 'open', face: '/assets/face1.png' },
-  { type: 'reflective', face: '/assets/face2.png' },
-  { type: 'focus', face: '/assets/face3.png' },
-  { type: 'transition', face: '/assets/face7.png' },
-  { type: 'active', face: '/assets/face6.png' },
+  { type: 'open', face: '/assets/1.png' },
+  { type: 'reflective', face: '/assets/2.png' },
+  { type: 'focus', face: '/assets/3.png' },
+  { type: 'transition', face: '/assets/7.png' },
+  { type: 'active', face: '/assets/6.png' },
 ];

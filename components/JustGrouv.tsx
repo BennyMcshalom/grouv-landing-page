@@ -11,14 +11,14 @@ export default function JustGrouv() {
             style={{ animation: 'float 9s ease-in-out infinite' }}
           >
             <span className="jg-tag">Just Grouv</span>
-            <Image src="/assets/new.jpg" alt="" width={330} height={413} />
+            <Image src="/assets/image-3.png" alt="" width={330} height={413} />
             <div className="jg-overlay" aria-hidden="true" />
             <div className="jg-top" aria-hidden="true">
               <div className="jg-clock">23:41</div>
               <div className="jg-loc">Porto, Portugal</div>
             </div>
             <figcaption className="jg-cap">
-              <p>sat down. didn&#39;t get up easy.</p>
+              <p>Somewhere between doing too much and doing nothing. This is where I live right now.</p>
             </figcaption>
           </figure>
         </div>

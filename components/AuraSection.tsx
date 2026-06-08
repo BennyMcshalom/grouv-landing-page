@@ -16,17 +16,22 @@ function AuraRing({ type, size }: { type: AuraType; size: number }) {
   if (type === 'reflective') {
     return (
       <>
-        <span className="aura aura-breath" style={{ width: out + 4, height: out + 4, background: `radial-gradient(circle,${color}60,transparent 68%)` }} />
-        <span className="aura" style={{ width: size + 10, height: size + 10, border: `2px solid ${color}88`, borderRadius: '50%' }} />
+        <span className="aura aura-breath" style={{ width: out + 4, height: out + 4, background: `radial-gradient(circle,${color}33,transparent 66%)` }} />
+        <span className="aura aura-inward" style={{ width: size + 10, height: size + 10, border: `2px solid ${color}`, opacity: '.55' }} />
       </>
     );
   }
   if (type === 'focus') {
     return (
-      <>
-        <span className="aura aura-mist" style={{ width: out + 8, height: out + 8, background: `radial-gradient(circle,${color}90,transparent 68%)` }} />
-        <span className="aura" style={{ width: size + 8, height: size + 8, border: `1.5px solid ${color}66`, borderRadius: '50%' }} />
-      </>
+      <span
+        className="aura aura-halo"
+        style={{
+          width: out + 10,
+          height: out + 10,
+          boxShadow: `0 0 0 6px ${color}2e, 0 0 22px 6px ${color}55`,
+          background: `radial-gradient(circle,${color}1f,transparent 72%)`,
+        }}
+      />
     );
   }
   if (type === 'transition') {

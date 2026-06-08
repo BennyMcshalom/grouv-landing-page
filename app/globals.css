@@ -512,6 +512,25 @@ body.js .reveal.scale {
   animation: mistDrift 6s ease-in-out infinite;
 }
 
+.aura-inward {
+  animation: auraInward 4.2s ease-in-out infinite;
+}
+
+.aura-halo {
+  filter: blur(1px);
+  animation: auraHalo 4s ease-in-out infinite;
+}
+
+@keyframes auraInward {
+  0%, 100% { transform: translate(-50%, -50%) scale(1.12); opacity: .3; }
+  50%       { transform: translate(-50%, -50%) scale(1);    opacity: .7; }
+}
+
+@keyframes auraHalo {
+  0%, 100% { opacity: .5;  transform: translate(-50%, -50%) scale(1);    }
+  50%      { opacity: .95; transform: translate(-50%, -50%) scale(1.04); }
+}
+
 .firefly {
   position: absolute;
   left: 50%;
@@ -1190,7 +1209,7 @@ body.js .reveal.scale {
 .jg-cap p {
   font-family: var(--display);
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 16px;
   font-style: italic;
   font-weight: 500;
   line-height: 1.3;
@@ -2361,6 +2380,141 @@ body.no-motion .meet-live .pd {
   }
 
   /* Steps already 1-col at 760 px — no change needed */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   404 NOT FOUND
+   ───────────────────────────────────────────────────────────── */
+.nf-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+}
+
+.nf-header {
+  padding: 1.2rem clamp(1rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.nf-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem clamp(1rem, 4vw, 2.5rem) 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs */
+.nf-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.nf-glow-a {
+  width: 60vw;
+  height: 60vw;
+  top: -20%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(243, 112, 30, .07), transparent 65%);
+}
+
+.nf-glow-b {
+  width: 50vw;
+  height: 50vw;
+  bottom: -15%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(78, 125, 94, .08), transparent 65%);
+}
+
+/* Big watermark */
+.nf-num {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  font-family: var(--display);
+  font-size: clamp(11rem, 30vw, 22rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ember);
+  opacity: .05;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -.04em;
+}
+
+.nf-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 580px;
+}
+
+.nf-h1 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 1.2rem 0 1.4rem;
+  text-wrap: balance;
+}
+
+.nf-h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.nf-sub {
+  font-size: 1.1rem;
+  color: var(--ink-3);
+  line-height: 1.7;
+  margin-bottom: 2.4rem;
+}
+
+.nf-btn {
+  padding: .95rem 2.4rem;
+  font-size: 1.05rem;
+}
+
+.nf-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  margin-top: 2rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.nf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .6;
+  animation: pulseDot 2s infinite;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .nf-h1 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .nf-sub {
+    font-size: 1rem;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────

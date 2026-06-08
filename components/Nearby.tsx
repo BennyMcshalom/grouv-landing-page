@@ -2,15 +2,15 @@ import Image from 'next/image';
 import { User, Palette, Navigation, Sunrise, CalendarDays, Laptop, Coffee, Hand } from 'lucide-react';
 
 const radarPins = [
-  { face: '/assets/face7.png', label: 'On the road now', icon: <Navigation size={10} strokeWidth={2} />, style: { left: '50%', top: '11%' } },
-  { face: '/assets/face2.png', label: 'Mid-project',     icon: <Palette   size={10} strokeWidth={2} />, style: { left: '15%', top: '64%' } },
-  { face: '/assets/face4.png', label: 'Building, early', icon: <User size={10} strokeWidth={2} />, style: { left: '84%', top: '58%' } },
+  { face: '/assets/14.png', label: 'On the road now', icon: <Navigation size={10} strokeWidth={2} />, style: { left: '50%', top: '11%' } },
+  { face: '/assets/15.png', label: 'Mid-project', icon: <Palette size={10} strokeWidth={2} />, style: { left: '15%', top: '64%' } },
+  { face: '/assets/16.png', label: 'Building, early', icon: <User size={10} strokeWidth={2} />, style: { left: '84%', top: '58%' } },
 ];
 
 const waveUsers = [
-  { name: 'David Okonkwo', face: '/assets/face4.png', stage: 'Building a business · early' },
-  { name: 'Cole Bennett',  face: '/assets/face1.png', stage: 'Building a business · early' },
-  { name: 'Saanvi Rao',    face: '/assets/face3.png', stage: 'Building a business · early' },
+  { name: 'David Okonkwo', face: '/assets/14.png', stage: 'Building a business · early' },
+  { name: 'Cole Bennett', face: '/assets/15.png', stage: 'Building a business · early' },
+  { name: 'Saanvi Rao', face: '/assets/16.png', stage: 'Building a business · early' },
 ];
 
 export default function Nearby() {
@@ -32,11 +32,11 @@ export default function Nearby() {
         {/* Radar */}
         <div className="radar reveal d2 scale" aria-label="Radar showing 3 nearby people">
           <div className="ring breathe" style={{ width: '100%', height: '100%', animationDelay: '0s' }} />
-          <div className="ring breathe" style={{ width: '74%',  height: '74%',  animationDelay: '.5s' }} />
-          <div className="ring breathe" style={{ width: '48%',  height: '48%',  animationDelay: '1s' }} />
-          <div className="ring breathe" style={{ width: '24%',  height: '24%',  animationDelay: '1.5s' }} />
+          <div className="ring breathe" style={{ width: '74%', height: '74%', animationDelay: '.5s' }} />
+          <div className="ring breathe" style={{ width: '48%', height: '48%', animationDelay: '1s' }} />
+          <div className="ring breathe" style={{ width: '24%', height: '24%', animationDelay: '1.5s' }} />
           <div className="sonar" aria-hidden="true" />
-          <div className="core"  aria-hidden="true" />
+          <div className="core" aria-hidden="true" />
           <div className="live-tag">
             <span className="pd" aria-hidden="true" />
             3 nearby
@@ -91,7 +91,7 @@ export default function Nearby() {
                   </span>
                   <span className="ev-going">
                     <span className="stk" aria-hidden="true">
-                      {['/assets/face4.png', '/assets/face1.png', '/assets/face3.png'].map((f) => (
+                      {['/assets/4.png', '/assets/1.png', '/assets/3.png'].map((f) => (
                         <i key={f}><Image src={f} alt="" width={20} height={20} /></i>
                       ))}
                     </span>
@@ -110,7 +110,7 @@ export default function Nearby() {
                 </p>
                 {[
                   { key: 'tc', Icon: Laptop, name: 'TechCrunch Disrupt 2026', where: 'Moscone West · Founders & builders', count: 12 },
-                  { key: 'cf', Icon: Coffee, name: 'Indie coffee, this block', where: "Right here · whoever's around",       count: 4 },
+                  { key: 'cf', Icon: Coffee, name: 'Indie coffee, this block', where: "Right here · whoever's around", count: 4 },
                 ].map(({ key, Icon, name, where, count }) => (
                   <div key={key} className="meet-card">
                     <span className="meet-ico" aria-hidden="true">
