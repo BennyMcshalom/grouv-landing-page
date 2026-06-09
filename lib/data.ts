@@ -53,17 +53,17 @@ export const HERO_NODES: HeroNode[] = [
 ];
 
 export const PROOF_FACES = [
-  '/assets/5.png',
-  '/assets/4.png',
-  '/assets/2.png',
-  '/assets/7.png',
-  '/assets/6.png',
+  '/assets/users.png',
+  '/assets/users-N.png',
+  '/assets/users3.png',
+  '/assets/users4.png',
+  '/assets/users5.png',
 ];
 
 export const AURA_ROW: Array<{ type: AuraType; face: string }> = [
-  { type: 'open', face: '/assets/1.png' },
-  { type: 'reflective', face: '/assets/2.png' },
-  { type: 'focus', face: '/assets/3.png' },
-  { type: 'transition', face: '/assets/7.png' },
-  { type: 'active', face: '/assets/6.png' },
+  { type: 'open', face: '/assets/users.png' },
+  { type: 'reflective', face: '/assets/users3.png' },
+  { type: 'focus', face: '/assets/users4.png' },
+  { type: 'transition', face: '/assets/users5.png' },
+  { type: 'active', face: '/assets/users-N.png' },
 ];

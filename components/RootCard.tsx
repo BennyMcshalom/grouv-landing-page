@@ -37,7 +37,7 @@ export default function RootCard() {
               <span className="tick">
                 <Check size={13} strokeWidth={3} stroke="var(--accent)" aria-hidden="true" />
               </span>
-              <span>Seen only by the people in <b>your chapter</b>.</span>
+              <span>Seen by the people you want to see it.</span>
             </li>
           </ul>
         </div>
@@ -55,7 +55,7 @@ export default function RootCard() {
                   style={{ width: 58, height: 58, border: '2px dashed var(--au-transition)', opacity: '.85' }}
                 />
                 <div className="ph">
-                  <Image src="/assets/4.png" alt="David" width={46} height={46} />
+                  <Image src="/assets/users5.png" alt="David" width={46} height={46} />
                 </div>
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>

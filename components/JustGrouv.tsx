@@ -3,6 +3,7 @@ import Image from 'next/image';
 export default function JustGrouv() {
   return (
     <section className="sect-pad dark" aria-labelledby="jg-heading">
+      <div className="jg-glow" aria-hidden="true" />
       <div className="wrap split rev">
         <div className="split-media" style={{ display: 'flex', justifyContent: 'center' }}>
           <figure

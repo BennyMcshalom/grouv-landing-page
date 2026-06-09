@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Figtree, Outfit, DM_Mono } from 'next/font/google';
+import { Figtree, Outfit, DM_Mono, Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 
 const figtree = Figtree({
@@ -21,6 +21,21 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-dm-mono',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-dm-sans',
   display: 'swap',
 });
 
@@ -143,7 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${outfit.variable} ${dmMono.variable}`}
+      className={`${figtree.variable} ${outfit.variable} ${dmMono.variable} ${playfair.variable} ${dmSans.variable}`}
       suppressHydrationWarning
     >
       <head>

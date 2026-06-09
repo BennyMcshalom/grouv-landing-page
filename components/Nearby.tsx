@@ -8,9 +8,9 @@ const radarPins = [
 ];
 
 const waveUsers = [
-  { name: 'David Okonkwo', face: '/assets/14.png', stage: 'Building a business · early' },
-  { name: 'Cole Bennett', face: '/assets/15.png', stage: 'Building a business · early' },
-  { name: 'Saanvi Rao', face: '/assets/16.png', stage: 'Building a business · early' },
+  { name: 'David Okonkwo', face: '/assets/users5.png', stage: 'Building a business · early' },
+  { name: 'Cole Bennett', face: '/assets/users-N.png', stage: 'Building a business · early' },
+  { name: 'Rachael Leigh', face: '/assets/users4.png', stage: 'Building a business · early' },
 ];
 
 export default function Nearby() {
@@ -23,9 +23,8 @@ export default function Nearby() {
             Some chapters are better <em>walked side by side.</em>
           </h2>
           <p className="reveal d2">
-            Turn it on and the few people in your chapter — right here, right now — can find
-            you. It switches off the moment you leave. No map of your life, no background
-            tracking. Just the quiet relief of not doing this alone.
+            <b>Turn it on when you want to be found.</b> The people nearby (3km) who are in the same chapter show up around you. Their stage, their status, right there. It goes off the moment you leave it idle for a while. No location saved, no trace left. Just the right people, close enough to actually meet.
+
           </p>
         </div>
 
@@ -91,7 +90,7 @@ export default function Nearby() {
                   </span>
                   <span className="ev-going">
                     <span className="stk" aria-hidden="true">
-                      {['/assets/4.png', '/assets/1.png', '/assets/3.png'].map((f) => (
+                      {['/assets/users5.png', '/assets/users-N.png', '/assets/users4.png'].map((f) => (
                         <i key={f}><Image src={f} alt="" width={20} height={20} /></i>
                       ))}
                     </span>
@@ -105,8 +104,7 @@ export default function Nearby() {
               <div className="prox-sub">
                 <span className="kicker">Meet &amp; greet</span>
                 <p className="sub-lede">
-                  Out in the world — a conference, a city you just landed in. Flip it on for
-                  the room, and the people here on the same journey find you.
+                  Out in the world — a conference, a block you are in, a park you are in, a football field you are in, a camping ground/park you are in, wherever you may be and you wanna meet people there on the same journey with you.
                 </p>
                 {[
                   { key: 'tc', Icon: Laptop, name: 'TechCrunch Disrupt 2026', where: 'Moscone West · Founders & builders', count: 12 },

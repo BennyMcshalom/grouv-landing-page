@@ -40,7 +40,7 @@ export default function Bonds() {
             <div className="bond-card reveal d2 from-right">
               <div className="row">
                 <span style={{ width: 42, height: 42, borderRadius: '50%', overflow: 'hidden', boxShadow: '0 0 0 2.5px var(--white)', flexShrink: 0 }}>
-                  <Image src="/assets/6.png" alt="Amara Lindqvist" width={42} height={42} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 36%' }} />
+                  <Image src="/assets/users3.png" alt="Amara Lindqvist" width={42} height={42} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 36%' }} />
                 </span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 600, fontSize: '.95rem' }}>Amara Lindqvist</div>

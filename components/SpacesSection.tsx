@@ -11,8 +11,7 @@ export default function SpacesSection() {
             Pick the <em>chapters</em> you&#39;re living.
           </h2>
           <p className="reveal d2">
-            You hold up to four at once. Grouv places you alongside people in the same one —
-            not the whole internet.
+            You hold up to four at once. Grouv places you alongside people in the same space, and the same chapter of life.
           </p>
         </div>
 
