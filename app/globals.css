@@ -2626,9 +2626,9 @@ body.no-motion .meet-live .pd {
   --lg-ink: #1A1510;
   --lg-ink3: #4A3F35;
   --lg-ink4: #6B5C50;
-  --lg-display: var(--font-figtree, 'Figtree'), system-ui, sans-serif;
-  --lg-body: var(--font-dm-sans, 'DM Sans'), system-ui, sans-serif;
-  --lg-mono: var(--font-dm-mono, 'DM Mono'), monospace;
+  --lg-display: var(--display);
+  --lg-body: var(--ui);
+  --lg-mono: var(--mono);
 
   background: var(--lg-bg);
   color: var(--lg-ink);

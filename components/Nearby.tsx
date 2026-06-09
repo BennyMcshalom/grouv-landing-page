@@ -20,10 +20,10 @@ export default function Nearby() {
         <div className="head center">
           <span className="eyebrow center reveal">Grouv Nearby · when you&#39;re ready to be found</span>
           <h2 className="reveal d1" id="nearby-heading">
-            Some chapters are better <em>walked side by side.</em>
+            <em>Turn it on</em>when you want to be found.
           </h2>
           <p className="reveal d2">
-            <b>Turn it on when you want to be found.</b> The people nearby (3km) who are in the same chapter show up around you. Their stage, their status, right there. It goes off the moment you leave it idle for a while. No location saved, no trace left. Just the right people, close enough to actually meet.
+            The people nearby (3km) who are in the same chapter show up around you. Their stage, their status, right there. It goes off the moment you leave it idle for a while. No location saved, no trace left. Just the right people, close enough to actually meet.
 
           </p>
         </div>

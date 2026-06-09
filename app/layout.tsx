@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Figtree, Outfit, DM_Mono, Playfair_Display, DM_Sans } from 'next/font/google';
+import { Figtree, Outfit, DM_Mono, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
 const figtree = Figtree({
@@ -32,12 +32,6 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-});
 
 const siteUrl = 'https://grouv.app';
 const siteTitle = 'Grouv — Social for where you actually are in life';
@@ -158,7 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${outfit.variable} ${dmMono.variable} ${playfair.variable} ${dmSans.variable}`}
+      className={`${figtree.variable} ${outfit.variable} ${dmMono.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <head>
