@@ -32,11 +32,11 @@ export default function HowItWorks() {
 
         <ol className="steps">
           {steps.map((step, i) => (
-            <li key={step.num} className={`step reveal d${i + 1} from-left`}>
+            <div key={step.num} className={`step  d${i + 1} from-left`}>
               <div className="num" aria-hidden="true">{step.num}</div>
               <h3>{step.title}</h3>
               <p>{step.body}</p>
-            </li>
+            </div>
           ))}
         </ol>
       </div>

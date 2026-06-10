@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { HERO_NODES, PROOF_FACES } from '@/lib/data';
 import { joinWaitlist } from '@/app/actions';
+import PhoneField from './PhoneField';
+import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
 
 /* ── Floating hero stage ── */
 function HeroStage() {
@@ -74,7 +76,10 @@ function HeroStage() {
 /* ── Hero form ── */
 function HeroForm() {
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState(DEFAULT_COUNTRY);
   const emailRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -82,9 +87,15 @@ function HeroForm() {
       emailRef.current?.focus();
       return;
     }
-    // Capture the email early — fire-and-forget so UX isn't blocked
-    joinWaitlist(email).catch(() => null);
-    window.dispatchEvent(new CustomEvent('grouv:prefill-email', { detail: email }));
+    if (!/^[\d\s+\-().]{4,}$/.test(phone)) {
+      phoneRef.current?.focus();
+      return;
+    }
+    const dial = COUNTRIES.find((c) => c.iso2 === country)?.dial ?? '1';
+    const fullPhone = `+${dial} ${phone.trim()}`;
+    // Capture early — fire-and-forget so UX isn't blocked
+    joinWaitlist(email, [], fullPhone).catch(() => null);
+    window.dispatchEvent(new CustomEvent('grouv:prefill', { detail: { email, phone, country } }));
     document.getElementById('join')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -98,6 +109,17 @@ function HeroForm() {
         placeholder="you@email.com"
         autoComplete="email"
         aria-label="Email address"
+        required
+      />
+      <PhoneField
+        id="heroPhone"
+        country={country}
+        onCountryChange={setCountry}
+        value={phone}
+        onChange={setPhone}
+        placeholder="Phone number"
+        required
+        inputRef={phoneRef}
       />
       <button type="submit" className="btn btn-primary">Join the waitlist</button>
     </form>

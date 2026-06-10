@@ -4,22 +4,29 @@ import { useEffect, useRef, useState } from 'react';
 import { SPACES } from '@/lib/data';
 import { SPACE_ICONS } from '@/lib/icons';
 import { joinWaitlist } from '@/app/actions';
+import PhoneField from './PhoneField';
+import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
 
 export default function JoinCTA() {
   const [picked, setPicked] = useState<string[]>([]);
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState(DEFAULT_COUNTRY);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const emailRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handler = (e: Event) => {
-      const val = (e as CustomEvent<string>).detail;
-      if (val) setEmail(val);
+      const detail = (e as CustomEvent<{ email: string; phone: string; country: string }>).detail;
+      if (detail?.email) setEmail(detail.email);
+      if (detail?.phone) setPhone(detail.phone);
+      if (detail?.country) setCountry(detail.country);
     };
-    window.addEventListener('grouv:prefill-email', handler);
-    return () => window.removeEventListener('grouv:prefill-email', handler);
+    window.addEventListener('grouv:prefill', handler);
+    return () => window.removeEventListener('grouv:prefill', handler);
   }, []);
 
   function togglePick(name: string) {
@@ -34,10 +41,16 @@ export default function JoinCTA() {
       emailRef.current?.focus();
       return;
     }
+    if (!/^[\d\s+\-().]{4,}$/.test(phone)) {
+      phoneRef.current?.focus();
+      return;
+    }
     setLoading(true);
     setError('');
 
-    const result = await joinWaitlist(email, picked);
+    const dial = COUNTRIES.find((c) => c.iso2 === country)?.dial ?? '1';
+    const fullPhone = `+${dial} ${phone.trim()}`;
+    const result = await joinWaitlist(email, picked, fullPhone);
     setLoading(false);
 
     if (!result.ok) {
@@ -61,8 +74,7 @@ export default function JoinCTA() {
                 Begin your <em>chapter.</em>
               </h2>
               <p>
-                Join the waitlist and tell us where you are. We roll out invites chapter by
-                chapter, so the right people meet at the right time.
+                Join the waitlist and tell us where you are.
               </p>
 
               <form className="cta-form" onSubmit={handleSubmit} noValidate>
@@ -107,6 +119,23 @@ export default function JoinCTA() {
                     {loading ? 'Saving…' : 'Save my spot'}
                   </button>
                 </div>
+                <label className="fl" htmlFor="joinPhone" style={{ marginTop: '1rem' }}>
+                  Phone number
+                </label>
+                <div className="cta-field">
+                  <PhoneField
+                    id="joinPhone"
+                    country={country}
+                    onCountryChange={setCountry}
+                    value={phone}
+                    onChange={setPhone}
+                    placeholder="555 123 4567"
+                    required
+                    disabled={loading}
+                    inputRef={phoneRef}
+                  />
+                </div>
+
                 {error && (
                   <p role="alert" style={{ color: '#ff6b4a', fontSize: '.88rem', marginTop: '.6rem' }}>
                     {error}

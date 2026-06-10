@@ -20,7 +20,7 @@ export default function Nearby() {
         <div className="head center">
           <span className="eyebrow center reveal">Grouv Nearby · when you&#39;re ready to be found</span>
           <h2 className="reveal d1" id="nearby-heading">
-            <em>Turn it on</em>when you want to be found.
+            <em>Turn it on</em> when you want to be found.
           </h2>
           <p className="reveal d2">
             The people nearby (3km) who are in the same chapter show up around you. Their stage, their status, right there. It goes off the moment you leave it idle for a while. No location saved, no trace left. Just the right people, close enough to actually meet.
@@ -102,9 +102,13 @@ export default function Nearby() {
               </div>
 
               <div className="prox-sub">
+
                 <span className="kicker">Meet &amp; greet</span>
+                <h3><em>Someone in your chapter</em> made the first move.
+                </h3>
                 <p className="sub-lede">
-                  Out in the world — a conference, a block you are in, a park you are in, a football field you are in, a camping ground/park you are in, wherever you may be and you wanna meet people there on the same journey with you.
+                  A dawn walk before the pitch. Sketch night, no laptops. A slow run for the burned-out. Small, intentional, close by. Someone decided to stop doing it alone. You just have to show up.
+
                 </p>
                 {[
                   { key: 'tc', Icon: Laptop, name: 'TechCrunch Disrupt 2026', where: 'Moscone West · Founders & builders', count: 12 },

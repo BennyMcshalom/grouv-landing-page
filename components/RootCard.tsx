@@ -77,11 +77,11 @@ export default function RootCard() {
             </p>
             <div className="media-frame" role="presentation" aria-hidden="true">
               <Image
-                src="/assets/Image-2.png"
+                src="/assets/tired-guy.png"
                 alt="Pitch Deck"
-                width={500}
-                height={500}
-                className="w-full h-auto"
+                width={800}
+                height={800}
+                className="imageTired"
               />
             </div>
 

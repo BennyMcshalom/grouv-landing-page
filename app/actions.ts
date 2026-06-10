@@ -5,6 +5,7 @@ export type WaitlistResult = { ok: boolean; error?: string };
 export async function joinWaitlist(
   email: string,
   spaces: string[] = [],
+  phone?: string,
 ): Promise<WaitlistResult> {
   const key = process.env.LOOPS_API_KEY;
   if (!key) {
@@ -24,19 +25,24 @@ export async function joinWaitlist(
       userGroup: 'waitlist',
       subscribed: true,
       ...(spaces.length > 0 && { selectedSpaces: spaces.join(', ') }),
+      ...(phone && { phone }),
     }),
   });
 
   if (res.status === 409) {
-    // Contact already exists — patch spaces if they chose any
-    if (spaces.length > 0) {
+    // Contact already exists — patch spaces/phone if provided
+    if (spaces.length > 0 || phone) {
       await fetch('https://app.loops.so/api/v1/contacts/update', {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${key}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, selectedSpaces: spaces.join(', ') }),
+        body: JSON.stringify({
+          email,
+          ...(spaces.length > 0 && { selectedSpaces: spaces.join(', ') }),
+          ...(phone && { phone }),
+        }),
       }).catch(() => null);
     }
     return { ok: true };
