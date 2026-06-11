@@ -114,10 +114,6 @@ export default function JoinCTA() {
                     required
                     disabled={loading}
                   />
-                  <button type="submit" className="btn btn-primary btn-lg" disabled={loading}
-                    style={{ opacity: loading ? 0.7 : 1 }}>
-                    {loading ? 'Saving…' : 'Save my spot'}
-                  </button>
                 </div>
                 <label className="fl" htmlFor="joinPhone" style={{ marginTop: '1rem' }}>
                   Phone number
@@ -134,6 +130,13 @@ export default function JoinCTA() {
                     disabled={loading}
                     inputRef={phoneRef}
                   />
+                </div>
+
+                <div className="cta-submit">
+                  <button type="submit" className="btn btn-primary btn-lg" disabled={loading}
+                    style={{ opacity: loading ? 0.7 : 1 }}>
+                    {loading ? 'Saving…' : 'Save my spot'}
+                  </button>
                 </div>
 
                 {error && (

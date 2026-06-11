@@ -1025,8 +1025,21 @@ body.js .reveal.scale {
 
 @media (max-width: 980px) {
   .manifesto .line {
-    font-size: 25px;
+    font-size: 35px;
     line-height: 1.3;
+  }
+
+  .line .hot {
+    color: var(--ink);
+    line-height: 1;
+    font-size: 18px !important;
+  }
+
+  .manifesto .line .ember {
+    color: var(--accent);
+    font-size: 18px !important;
+    line-height: 1;
+    font-style: italic;
   }
 }
 
@@ -1036,10 +1049,12 @@ body.js .reveal.scale {
 
 .manifesto .line .hot {
   color: var(--ink);
+  font-size: 20px !important;
 }
 
 .manifesto .line .ember {
   color: var(--accent);
+  font-size: 20px !important;
   font-style: italic;
 }
 
@@ -2408,6 +2423,14 @@ body.no-motion .post-slide.active .post-card {
   background: rgba(255, 255, 255, .08);
 }
 
+.cta-submit {
+  max-width: 460px;
+}
+
+.cta-submit .btn {
+  width: 100%;
+}
+
 .cta-note {
   margin-top: 1.1rem;
   font-size: .84rem;
@@ -2752,7 +2775,11 @@ body.no-motion .meet-live .pd {
     border-radius: 0 14px 14px 0;
   }
 
-  .cta-emailrow .btn {
+  .cta-submit {
+    max-width: 100%;
+  }
+
+  .cta-submit .btn {
     border-radius: 14px;
     width: 100%;
     justify-content: center;

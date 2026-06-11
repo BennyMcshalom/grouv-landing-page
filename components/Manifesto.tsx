@@ -6,8 +6,9 @@ export default function Manifesto() {
           Why Grouv exists
         </span>
         <p className="line reveal d1 scale" style={{ marginTop: '1.6rem' }}>
-          Every other feed asks you to <em>perform</em> a life.
-          <br />
+          Every other feed asks you to <em>perform</em> a life.</p>
+        <br />
+        <p className="line">
           <span className="hot">Grouv only asks</span>{' '}
           <span className="ember">where you actually are</span>
           <span className="hot">, and finds the few people standing there with you.</span>
