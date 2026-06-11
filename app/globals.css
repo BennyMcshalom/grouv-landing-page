@@ -1035,7 +1035,7 @@ body.js .reveal.scale {
     font-size: 18px !important;
   }
 
-  .manifesto .line .ember {
+  .otherTexts .ember {
     color: var(--accent);
     font-size: 18px !important;
     line-height: 1;
@@ -1043,16 +1043,8 @@ body.js .reveal.scale {
   }
 }
 
-.manifesto .line em {
-  font-style: italic;
-}
 
-.manifesto .line .hot {
-  color: var(--ink);
-  font-size: 20px !important;
-}
-
-.manifesto .line .ember {
+.otherTexts .ember {
   color: var(--accent);
   font-size: 20px !important;
   font-style: italic;
