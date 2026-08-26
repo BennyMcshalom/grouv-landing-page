@@ -7,6 +7,12 @@ import { joinWaitlist } from '@/app/actions';
 import PhoneField from './PhoneField';
 import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function JoinCTA() {
   const [picked, setPicked] = useState<string[]>([]);
   const [email, setEmail] = useState('');
@@ -58,6 +64,7 @@ export default function JoinCTA() {
       return;
     }
 
+    window.fbq?.('track', 'CompleteRegistration');
     setSubmitted(true);
   }
 
