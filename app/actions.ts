@@ -1,5 +1,7 @@
 'use server';
 
+import { appendWaitlistRow } from '@/lib/googleSheet';
+
 export type WaitlistResult = { ok: boolean; error?: string };
 
 export async function joinWaitlist(
@@ -45,6 +47,9 @@ export async function joinWaitlist(
         }),
       }).catch(() => null);
     }
+    appendWaitlistRow({ email, phone, spaces }).catch((err) => {
+      console.error('Failed to append waitlist row to Google Sheet', err);
+    });
     return { ok: true };
   }
 
@@ -65,6 +70,10 @@ export async function joinWaitlist(
       body: JSON.stringify({ transactionalId: tid, email }),
     }).catch(() => null);
   }
+
+  appendWaitlistRow({ email, phone, spaces }).catch((err) => {
+    console.error('Failed to append waitlist row to Google Sheet', err);
+  });
 
   return { ok: true };
 }
