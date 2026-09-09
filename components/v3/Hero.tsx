@@ -40,7 +40,7 @@ export default function Hero() {
         you.
       </p>
       <a className="hero-cta" href="#join">
-        Enter your space <span>↗</span>
+        Enter your space <span>↗︎</span>
       </a>
       <FallingPills />
       <div className="photo-world">

@@ -9,7 +9,7 @@ export default function Header() {
         <span>8 spaces</span>
         <a href="#join">Join waitlist</a>
       </nav>
-      <a className="header-cta" href="#join">Enter Grouv <b>↗</b></a>
+      <a className="header-cta" href="#join">Enter Grouv <b>↗︎</b></a>
     </header>
   );
 }

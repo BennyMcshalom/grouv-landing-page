@@ -110,7 +110,7 @@ export default function WaitlistForm() {
       </fieldset>
       <button type="submit" disabled={loading || complete}>
         {complete ? "You're in" : loading ? "Connecting…" : "Connect my world"}{" "}
-        <span>↗</span>
+        <span>↗︎</span>
       </button>
       <p className="form-status" aria-live="polite">
         {status}

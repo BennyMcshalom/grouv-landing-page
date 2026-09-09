@@ -9,7 +9,7 @@ export default function NotFound() {
       <p className="lead reveal">
         The page you&rsquo;re looking for doesn&rsquo;t exist, moved, or never made it past the idea stage. Your people are still back home.
       </p>
-      <a className="hero-cta" href="/">Back to Grouv <span>↗</span></a>
+      <a className="hero-cta" href="/">Back to Grouv <span>↗︎</span></a>
       <div className="orbit o1" />
       <div className="orbit o2" />
     </section>

@@ -2,7 +2,7 @@ const DIMENSIONS = [
   {
     n: "01",
     cls: "violet",
-    symbol: "↗",
+    symbol: "↗︎",
     title: "Career",
     sub: "Making the move",
   },
